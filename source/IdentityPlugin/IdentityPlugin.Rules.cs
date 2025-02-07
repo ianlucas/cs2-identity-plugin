@@ -56,7 +56,7 @@ public partial class IdentityPlugin
 
     public void HandleDisconnectingPlayer(CCSPlayerController controller)
     {
-        if (controller.IsBot || !IsEnabled())
+        if (controller.IsBot)
             return;
         UsersOnTick.Remove(controller.SteamID, out var _);
     }

@@ -37,7 +37,7 @@ public partial class IdentityPlugin
     {
         var controller = @event.Userid;
         if (controller != null)
-            HandleConnectingPlayer(controller);
+            HandleDisconnectingPlayer(controller);
         else
             Logger.LogWarning(
                 "[Identity] Unable to handle disconnecting player ({Name})",
