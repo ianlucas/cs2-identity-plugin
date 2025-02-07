@@ -1,6 +1,6 @@
 # CS2 Identity Plugin
 
-> A [CounterStrikeSharp](https://docs.cssharp.dev) plugin for Counter-Strike 2 for autheticating external users
+> A [CounterStrikeSharp](https://docs.cssharp.dev) plugin for Counter-Strike 2 for authenticating external users
 
 ## Installation
 
