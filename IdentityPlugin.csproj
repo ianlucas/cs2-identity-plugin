@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<BaseOutputPath>bin\</BaseOutputPath>
+	<OutputPath>$(BaseOutputPath)Release\plugins\IdentityPlugin</OutputPath>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CounterStrikeSharp.API" Version="1.0.305" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".github\workflows\build-and-release.yml" />
+  </ItemGroup>
+
+</Project>
