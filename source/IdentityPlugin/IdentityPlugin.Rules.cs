@@ -15,7 +15,7 @@ public partial class IdentityPlugin
 
     public bool IsEnabled()
     {
-        return url.Value.Contains("$userId");
+        return url.Value.Contains("{userId}");
     }
 
     public async void HandleConnectingPlayer(CCSPlayerController controller)

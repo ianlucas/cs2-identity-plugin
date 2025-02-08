@@ -28,7 +28,7 @@ public partial class IdentityPlugin
         try
         {
             using HttpClient client = new();
-            var response = await client.GetAsync(url.Value.Replace("$userId", steamId.ToString()));
+            var response = await client.GetAsync(url.Value.Replace("{userId}", steamId.ToString()));
             response.EnsureSuccessStatusCode();
 
             string jsonContent = response.Content.ReadAsStringAsync().Result;
