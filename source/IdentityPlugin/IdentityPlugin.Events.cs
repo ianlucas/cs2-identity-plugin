@@ -16,10 +16,7 @@ public partial class IdentityPlugin
         if (controller != null)
             HandleConnectingPlayer(controller);
         else
-            Logger.LogWarning(
-                "[Identity] Unable to handle connecting player ({Name})",
-                @event.Name
-            );
+            Logger.LogWarning("Unable to handle connecting player ({Name})", @event.Name);
         return HookResult.Continue;
     }
 
@@ -29,7 +26,7 @@ public partial class IdentityPlugin
         if (controller != null)
             HandleConnectingPlayer(controller);
         else
-            Logger.LogWarning("[Identity] Unable to handle connecting player.");
+            Logger.LogWarning("Unable to handle connecting player.");
         return HookResult.Continue;
     }
 
@@ -39,10 +36,7 @@ public partial class IdentityPlugin
         if (controller != null)
             HandleDisconnectingPlayer(controller);
         else
-            Logger.LogWarning(
-                "[Identity] Unable to handle disconnecting player ({Name})",
-                @event.Name
-            );
+            Logger.LogWarning("Unable to handle disconnecting player ({Name})", @event.Name);
         return HookResult.Continue;
     }
 }

@@ -23,10 +23,7 @@ public partial class IdentityPlugin
     {
         if (controller.IsBot || !IsEnabled() || UsersOnFetch.Contains(controller.SteamID))
             return;
-        Logger.LogInformation(
-            "[Identity] Player {Name} is being authenticated.",
-            controller.PlayerName
-        );
+        Logger.LogInformation("Player {Name} is being authenticated.", controller.PlayerName);
         UsersOnFetch.Add(controller.SteamID);
         var user = await FetchUser(controller.SteamID);
         UsersOnFetch.Remove(controller.SteamID);
@@ -35,7 +32,7 @@ public partial class IdentityPlugin
             if (!controller.IsValid || controller.Connected > PlayerConnectedState.PlayerConnecting)
             {
                 Logger.LogWarning(
-                    "[Identity] Player {Name} is invalid after user fetch.",
+                    "Player {Name} is invalid after user fetch.",
                     controller.PlayerName
                 );
                 return;
@@ -51,7 +48,7 @@ public partial class IdentityPlugin
             {
                 UsersOnTick.TryAdd(controller.SteamID, user);
                 Logger.LogInformation(
-                    "[Identity] Player {Name} is authenticated (rating={Rating}).",
+                    "Player {Name} is authenticated (rating={Rating}).",
                     controller.PlayerName,
                     user.Rating
                 );
@@ -61,7 +58,7 @@ public partial class IdentityPlugin
             {
                 AdminManager.AddPlayerPermissions(controller, user.Flags);
                 Logger.LogInformation(
-                    "[Identity] Player {Name} had flags {Flags} assigned",
+                    "Player {Name} had flags {Flags} assigned",
                     controller.PlayerName,
                     user.Flags
                 );

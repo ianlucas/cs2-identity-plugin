@@ -43,28 +43,12 @@ public static class IdentityPluginExtensions
 
     public static void SetRating(this CCSPlayerController controller, int rating)
     {
+        controller.CompetitiveWins = 256;
         controller.CompetitiveRankType = 11;
-        Utilities.SetStateChanged(controller, "CCSPlayerController", "m_iCompetitiveRankType");
         controller.CompetitiveRanking = rating;
-        Utilities.SetStateChanged(controller, "CCSPlayerController", "m_iCompetitiveRanking");
         controller.CompetitiveRankingPredicted_Loss = 0;
-        Utilities.SetStateChanged(
-            controller,
-            "CCSPlayerController",
-            "m_iCompetitiveRankingPredicted_Loss"
-        );
         controller.CompetitiveRankingPredicted_Tie = 0;
-        Utilities.SetStateChanged(
-            controller,
-            "CCSPlayerController",
-            "m_iCompetitiveRankingPredicted_Tie"
-        );
         controller.CompetitiveRankingPredicted_Win = 0;
-        Utilities.SetStateChanged(
-            controller,
-            "CCSPlayerController",
-            "m_iCompetitiveRankingPredicted_Win"
-        );
     }
 
     public static void HideRating(this CCSPlayerController controller)
