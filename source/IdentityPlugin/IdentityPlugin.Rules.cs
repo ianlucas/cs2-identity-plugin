@@ -5,6 +5,7 @@
 
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
+using CounterStrikeSharp.API.Modules.Admin;
 using Microsoft.Extensions.Logging;
 
 namespace IdentityPlugin;
@@ -50,9 +51,19 @@ public partial class IdentityPlugin
             {
                 UsersOnTick.TryAdd(controller.SteamID, user);
                 Logger.LogInformation(
-                    "[Identity] Player {name} is authenticated (rating={rating}).",
+                    "[Identity] Player {Name} is authenticated (rating={Rating}).",
                     controller.PlayerName,
                     user.Rating
+                );
+            }
+
+            if (user.Flags.Length > 0)
+            {
+                AdminManager.AddPlayerPermissions(controller, user.Flags);
+                Logger.LogInformation(
+                    "[Identity] Player {Name} had flags {Flags} assigned",
+                    controller.PlayerName,
+                    user.Flags
                 );
             }
         });
