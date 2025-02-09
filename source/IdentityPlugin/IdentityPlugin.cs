@@ -21,5 +21,11 @@ public partial class IdentityPlugin : BasePlugin
         RegisterEventHandler<EventPlayerConnect>(OnPlayerConnect);
         RegisterEventHandler<EventPlayerConnectFull>(OnPlayerConnectFull);
         RegisterEventHandler<EventPlayerDisconnect>(OnPlayerDisconnect);
+
+        AddCommand(
+            "identity_debug",
+            "Prints a message to help debug Identity Plugin.",
+            OnDebugCommand
+        );
     }
 }
