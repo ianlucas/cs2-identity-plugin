@@ -18,6 +18,9 @@ public class User
     [JsonPropertyName("rating")]
     public required int Rating { get; set; }
 
+    [JsonPropertyName("flags")]
+    public required string[] Flags { get; set; }
+
     public CCSPlayerController? Controller;
 }
 
