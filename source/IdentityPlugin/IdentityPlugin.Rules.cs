@@ -22,7 +22,10 @@ public partial class IdentityPlugin
     {
         if (controller.IsBot || !IsEnabled() || UsersOnFetch.Contains(controller.SteamID))
             return;
-        Logger.LogInformation("[Identity] Authenticating player {Name}", controller.PlayerName);
+        Logger.LogInformation(
+            "[Identity] Player {Name} is being authenticated.",
+            controller.PlayerName
+        );
         UsersOnFetch.Add(controller.SteamID);
         var user = await FetchUser(controller.SteamID);
         UsersOnFetch.Remove(controller.SteamID);
@@ -47,8 +50,9 @@ public partial class IdentityPlugin
             {
                 UsersOnTick.TryAdd(controller.SteamID, user);
                 Logger.LogInformation(
-                    "[Identity] Player {name} is authenticated.",
-                    controller.PlayerName
+                    "[Identity] Player {name} is authenticated (rating={rating}).",
+                    controller.PlayerName,
+                    user.Rating
                 );
             }
         });
@@ -58,6 +62,8 @@ public partial class IdentityPlugin
     {
         if (controller.IsBot)
             return;
-        UsersOnTick.Remove(controller.SteamID, out var _);
+        foreach (var (steamId, user) in UsersOnTick)
+            if (user.Controller?.SteamID == controller.SteamID || user.Controller?.IsValid != true)
+                UsersOnTick.TryRemove(steamId, out var _);
     }
 }
