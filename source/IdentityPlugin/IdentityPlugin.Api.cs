@@ -22,6 +22,7 @@ public class User
     public required string[] Flags { get; set; }
 
     public CCSPlayerController? Controller;
+    public bool ReceivedServerRankRevealAll = false;
 }
 
 public partial class IdentityPlugin
@@ -40,7 +41,7 @@ public partial class IdentityPlugin
         }
         catch (Exception error)
         {
-            Logger.LogError("[Identity] Unable to fetch user: {Message}", error.Message);
+            Logger.LogError("Unable to fetch user: {Message}", error.Message);
             return default;
         }
     }
