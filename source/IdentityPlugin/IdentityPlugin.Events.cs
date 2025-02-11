@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 using CounterStrikeSharp.API.Core;
-using Microsoft.Extensions.Logging;
 
 namespace IdentityPlugin;
 
@@ -15,8 +14,6 @@ public partial class IdentityPlugin
         var controller = @event.Userid;
         if (controller != null)
             HandleConnectingPlayer(controller);
-        else
-            Logger.LogWarning("Unable to handle connecting player ({Name})", @event.Name);
         return HookResult.Continue;
     }
 
@@ -25,8 +22,6 @@ public partial class IdentityPlugin
         var controller = @event.Userid;
         if (controller != null)
             HandleConnectingPlayer(controller);
-        else
-            Logger.LogWarning("Unable to handle connecting player.");
         return HookResult.Continue;
     }
 
@@ -35,8 +30,6 @@ public partial class IdentityPlugin
         var controller = @event.Userid;
         if (controller != null)
             HandleDisconnectingPlayer(controller);
-        else
-            Logger.LogWarning("Unable to handle disconnecting player ({Name})", @event.Name);
         return HookResult.Continue;
     }
 }

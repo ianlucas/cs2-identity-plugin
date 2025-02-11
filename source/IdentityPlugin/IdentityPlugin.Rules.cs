@@ -30,13 +30,7 @@ public partial class IdentityPlugin
         Server.NextFrame(() =>
         {
             if (!controller.IsValid || controller.Connected > PlayerConnectedState.PlayerConnecting)
-            {
-                Logger.LogWarning(
-                    "Player {Name} is invalid after user fetch.",
-                    controller.PlayerName
-                );
                 return;
-            }
             if (user == null)
             {
                 if (strict.Value)
@@ -48,7 +42,7 @@ public partial class IdentityPlugin
             {
                 UsersOnTick.TryAdd(controller.SteamID, user);
                 Logger.LogInformation(
-                    "Player {Name} is authenticated (rating={Rating}).",
+                    "Player {Name} has rating {Rating}.",
                     controller.PlayerName,
                     user.Rating
                 );
@@ -58,7 +52,7 @@ public partial class IdentityPlugin
             {
                 AdminManager.AddPlayerPermissions(controller, user.Flags);
                 Logger.LogInformation(
-                    "Player {Name} had flags {Flags} assigned",
+                    "Player {Name} has flags {Flags}.",
                     controller.PlayerName,
                     user.Flags
                 );
