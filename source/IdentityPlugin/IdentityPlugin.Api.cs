@@ -22,7 +22,6 @@ public class User
     public required string[] Flags { get; set; }
 
     public CCSPlayerController? Controller;
-    public bool ReceivedServerRankRevealAll = false;
 }
 
 public partial class IdentityPlugin
