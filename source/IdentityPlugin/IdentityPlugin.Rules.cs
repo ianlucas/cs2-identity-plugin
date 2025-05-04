@@ -6,6 +6,7 @@
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Admin;
+using CounterStrikeSharp.API.ValveConstants.Protobuf;
 using Microsoft.Extensions.Logging;
 
 namespace IdentityPlugin;
@@ -34,7 +35,9 @@ public partial class IdentityPlugin
             if (user == null)
             {
                 if (strict.Value)
-                    controller.Kick();
+                    controller.Disconnect(
+                        NetworkDisconnectionReason.NETWORK_DISCONNECT_REJECT_RESERVED_FOR_LOBBY
+                    );
                 return;
             }
             user.Controller = controller;
