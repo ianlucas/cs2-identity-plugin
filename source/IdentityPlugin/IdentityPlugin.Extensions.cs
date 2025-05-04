@@ -24,12 +24,6 @@ public static class IdentityPluginExtensions
             : null
         ) ?? throw new Exception("Game rules not found.");
 
-    public static void Kick(this CCSPlayerController controller)
-    {
-        if (controller.IsValid && controller.UserId.HasValue)
-            Server.ExecuteCommand($"kickid {(ushort)controller.UserId}");
-    }
-
     public static bool SetName(this CCSPlayerController controller, string name)
     {
         if (controller.PlayerName != name)
