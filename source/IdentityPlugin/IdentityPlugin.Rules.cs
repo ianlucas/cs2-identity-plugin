@@ -25,9 +25,10 @@ public partial class IdentityPlugin
         if (controller.IsBot || !IsEnabled() || UsersOnFetch.Contains(controller.SteamID))
             return;
         Logger.LogInformation("Player {Name} is being authenticated.", controller.PlayerName);
-        UsersOnFetch.Add(controller.SteamID);
-        var user = await FetchUser(controller.SteamID);
-        UsersOnFetch.Remove(controller.SteamID);
+        var steamId = controller.SteamID;
+        UsersOnFetch.Add(steamId);
+        var user = await FetchUser(steamId);
+        UsersOnFetch.Remove(steamId);
         Server.NextFrame(() =>
         {
             if (!controller.IsValid || controller.Connected > PlayerConnectedState.PlayerConnecting)
