@@ -31,7 +31,11 @@ public partial class IdentityPlugin
         try
         {
             using HttpClient client = new();
-            var response = await client.GetAsync(url.Value.Replace("{userId}", steamId.ToString()));
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            var response = await client.GetAsync(
+                url.Value.Replace("{userId}", steamId.ToString()),
+                cts.Token
+            );
             response.EnsureSuccessStatusCode();
 
             string jsonContent = response.Content.ReadAsStringAsync().Result;
